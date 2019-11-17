@@ -20,12 +20,13 @@ public class TripSummary {
 
         if (tripData.length == 2 && tripData[1] != null) {
             driverList.add(tripData[1]);
+            return tripData[1];
         } else {
             //No driver info found
             System.out.println("/***** Validation Required *****/");
             System.out.println("File validation required: Driver name not found");
         }
-        return tripData[1];
+        return null;
     }
 
     public static TripSummary addTrip(String[] tripData) {
@@ -39,6 +40,7 @@ public class TripSummary {
             tripSummary.speed = RootUtil.calculateSpeed(tripSummary.startTime, tripSummary.endTime, tripSummary.miles);
             if (tripSummary.speed > 5 && tripSummary.speed < 100) {
                 tripSummaryList.add(tripSummary);
+                return tripSummary;
             } else {
                 //Ignore trips that are less than 5 miles or greater than 100 miles
                 System.out.println("Trip ignored for driver " + tripData[1] + " for not driving in valid speed limit");
@@ -48,7 +50,7 @@ public class TripSummary {
             System.out.println("/***** Validation Required *****/");
             System.out.println("File validation required : Invalid trip data found");
         }
-        return tripSummary;
+        return null;
     }
 
     public static List<FinalSummary> prepareDriverSummary() {
