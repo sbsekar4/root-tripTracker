@@ -1,8 +1,6 @@
 Driver Dan
-Driver
+Driver Lauren
+Driver Kumi
 Trip Dan 07:15 07:45 17.3
-Driver Bob
-Driver Alex
-Trip Alex 12:01 13:16 42.0
 Trip Dan 06:12 06:32 21.8
-Trip Austin 12:01 13:16 42.0
+Trip Lauren 12:01 13:16 42.0

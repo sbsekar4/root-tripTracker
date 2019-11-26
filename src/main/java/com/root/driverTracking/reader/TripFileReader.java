@@ -18,6 +18,6 @@ public class TripFileReader {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return  fileData;
+        return fileData;
     }
 }

@@ -10,11 +10,11 @@ import static org.junit.Assert.assertEquals;
 
 public class TripSummaryTest {
 
-    private List<String> driverList = new ArrayList<>();
-    List<TripSummary> tripSummaryList = new ArrayList<>();
-    String driverName="Driver Suresh";
+    private final List<String> driverList = new ArrayList<>();
+    private final List<TripSummary> tripSummaryList = new ArrayList<>();
+    private final String driverName="Driver Suresh";
     String[] newDriver = driverName.split("\\s+");
-    String tripData = "Trip Alex 12:01 13:16 42.0";
+    private final String tripData = "Trip Alex 12:01 13:16 42.0";
     String[] tripDataArray = tripData.split("\\s+");
 
     @Before

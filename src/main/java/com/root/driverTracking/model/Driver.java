@@ -1,51 +1,49 @@
 package com.root.driverTracking.model;
 
+import com.root.driverTracking.util.RootUtil;
+
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
-public class Driver {
-    public Long driverID;
+public class Driver implements Comparator<Driver> {
+    private Long driverID;
     public String name;
-    public List<Trip> trips;
+    private List<Trip> trips;
 
-    public Driver(String name){
-        this.name =name;
-        this.driverID = (long) Math.random();
-        this.trips =new ArrayList<>();
-    }
-
-    public Long getDriverID() {
-        return driverID;
-    }
-
-    public void setDriverID(Long driverID) {
-        this.driverID = driverID;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
+    public Driver(String name) {
         this.name = name;
+        this.driverID = (long) Math.random();
+        this.trips = new ArrayList<>();
     }
 
     public List<Trip> getTrips() {
         return trips;
     }
 
-    public void setTrips(List<Trip> tripSummaryList) {
-        this.trips = tripSummaryList;
+    public Long getAverageSpeed() {
+        return Math.round(RootUtil.averageSpeed((double) getTotalDurationForDriver(), (double) getTotalMilesForDriver()));
     }
 
-    public Double getAverageSpeed(){
-        double speed=0;
-        for(Trip trip:trips){
-            speed = trip.getSpeed() + speed;
+    public Long getTotalMilesForDriver() {
+        double miles = 0;
+        for (Trip trip : trips) {
+            miles = trip.miles + miles;
         }
-        return speed/trips.size();
+        return Math.round(miles);
+    }
+
+    private Long getTotalDurationForDriver() {
+        double duration = 0;
+        for (Trip trip : trips) {
+            duration = trip.calculateDuration() + duration;
+        }
+        return Math.round(duration);
     }
 
 
-
+    @Override
+    public int compare(Driver o1, Driver o2) {
+        return o1.getTotalMilesForDriver().compareTo(o2.getTotalMilesForDriver());
+    }
 }

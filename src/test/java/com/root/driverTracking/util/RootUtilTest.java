@@ -8,10 +8,10 @@ import java.time.LocalTime;
 import static org.junit.Assert.assertEquals;
 
 public class RootUtilTest {
-    LocalTime endTime;
-    LocalTime startTime;
-    double miles;
-    double duration;
+    private LocalTime endTime;
+    private LocalTime startTime;
+    private double miles;
+    private double duration;
 
     @Before
     public void init() {
