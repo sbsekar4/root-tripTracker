@@ -1,4 +1,4 @@
-package com.root.vo;
+package com.root.driverTracking.vo;
 
 
 import java.util.Collections;

@@ -1,4 +1,4 @@
-package com.root.util;
+package com.root.driverTracking.util;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -29,7 +29,7 @@ public class RootUtilTest {
 
     @Test
     public void calculateDuration() {
-        long duration = RootUtil.calculateDuration(startTime,endTime);
+        long duration =(long) RootUtil.calculateDuration(startTime,endTime);
         assertEquals("Driving duration in miles : ",75,duration);
     }
 

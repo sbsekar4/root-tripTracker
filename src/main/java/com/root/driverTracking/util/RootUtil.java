@@ -1,4 +1,4 @@
-package com.root.util;
+package com.root.driverTracking.util;
 
 import java.time.Duration;
 import java.time.LocalTime;
@@ -6,19 +6,10 @@ import java.time.LocalTime;
 public class RootUtil {
 
     public static double calculateSpeed(LocalTime startTime, LocalTime endTime, Double miles){
-
-        long duration = Duration.between(startTime, endTime).toMinutes();
-        double speed;
-        if(duration>0)
-            speed =  (miles / duration) * 60 ;
-        else
-            speed = miles * 60;
-
-        return speed;
+        return averageSpeed(calculateDuration(startTime,endTime),miles);
     }
 
-    public static long calculateDuration(LocalTime startTime, LocalTime endTime){
-
+    public static double calculateDuration(LocalTime startTime, LocalTime endTime){
         return Duration.between(startTime, endTime).toMinutes();
     }
 
