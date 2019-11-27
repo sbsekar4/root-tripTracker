@@ -33,6 +33,7 @@ Kumi: 0 miles
 Solution:
 
 Tech specs: Java 8, Maven, Junit4, amazon-corretto-8.jdk
+Java Doc: root-tripTracker/javadoc/index.html
 
     1) DriverTripHandler.java :is the main class, which process the input file and prints the output in the console.
 
