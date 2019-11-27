@@ -1,5 +1,6 @@
 package com.root.driverSummary.model;
 
+import com.root.driverSummary.helper.TripDataHelper;
 import com.root.driverSummary.util.RootUtil;
 
 import java.util.ArrayList;
@@ -7,13 +8,13 @@ import java.util.Comparator;
 import java.util.List;
 
 public class Driver implements Comparator<Driver> {
-
+    public Long driverID; /*Driver ID is not used in this app, created to map the Trip details using Driver ID */
     public final String name;
     private final List<Trip> trips;
 
     public Driver(String name) {
         this.name = name;
-        final Long driverID = (long) Math.random();
+        this.driverID = TripDataHelper.createDriverID();/*Kept it real simple since its not used effectively */
         this.trips = new ArrayList<>();
     }
 

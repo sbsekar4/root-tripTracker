@@ -5,6 +5,8 @@ import com.root.driverSummary.util.RootUtil;
 import java.time.LocalTime;
 
 public class TripDataHelper {
+    private static long tripIDCounter = 0;
+    private static long driverIDCounter = 0;
 
     private static Boolean hasDriver(String[] tripData) {
 
@@ -62,6 +64,16 @@ public class TripDataHelper {
 
     public static Double getMiles(String miles) {
         return convertToMiles(miles);
+    }
+
+    public static synchronized Long createDriverID()
+    {
+        return driverIDCounter++;
+    }
+
+    public static synchronized Long createTripID()
+    {
+        return tripIDCounter++;
     }
 
 }

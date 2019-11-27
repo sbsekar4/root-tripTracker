@@ -35,6 +35,8 @@ Solution:
 Tech specs: Java 8, Maven, Junit4, amazon-corretto-8.jdk
 Java Doc: root-tripTracker/javadoc/index.html
 
+Java Classes:
+
     1) DriverTripHandler.java :is the main class, which process the input file and prints the output in the console.
 
     2) TripFileReader.java : Used Java text Scanner to read through the file. This breaks the line into tokens using the delimiter pattern.
@@ -53,9 +55,8 @@ Java Doc: root-tripTracker/javadoc/index.html
     7) Test cases covers all the public methods, which has validation and calculation, in model, manager and helper classes.
 
 Run the application:
-    This solution can be executed in 2 ways:
 
     1) mvn clean package, builds the root.jar in the target directory
-    2) java -jar target/root.jar (loads and executes the main class).
+    2) java -jar target/root.jar (loads and executes the main class and prints the output in console).
 
 
