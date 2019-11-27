@@ -66,14 +66,11 @@ public class TripDataHelper {
         return convertToMiles(miles);
     }
 
-    public static synchronized Long createDriverID()
-    {
+    public static synchronized Long createDriverID() {
         return driverIDCounter++;
     }
 
-    public static synchronized Long createTripID()
-    {
+    public static synchronized Long createTripID() {
         return tripIDCounter++;
     }
-
 }
