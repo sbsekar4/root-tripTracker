@@ -1,6 +1,6 @@
-com.root.driverTracking.helper
-com.root.driverTracking.manager
-com.root.driverTracking.model
-com.root.driverTracking.reader
-com.root.driverTracking.service
-com.root.driverTracking.util
+com.root.driverSummary.helper
+com.root.driverSummary.manager
+com.root.driverSummary.model
+com.root.driverSummary.reader
+com.root.driverSummary.service
+com.root.driverSummary.util

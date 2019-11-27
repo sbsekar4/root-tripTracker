@@ -1,6 +1,6 @@
-package com.root.driverTracking.model;
+package com.root.driverSummary.model;
 
-import com.root.driverTracking.util.RootUtil;
+import com.root.driverSummary.util.RootUtil;
 
 import java.util.ArrayList;
 import java.util.Comparator;

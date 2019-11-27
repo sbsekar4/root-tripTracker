@@ -34,38 +34,22 @@ Solution:
 
 Tech specs: Java 8, Maven, Junit4, amazon-corretto-8.jdk
 
-    1)  Given the input file is provided, ruled out the possibility of FileNotFound case and added the file into classpath.
+    1) DriverTripHandler.java :is the main class, which process the input file and prints the output in the console.
 
-    2)  Class: TripFileReader.java - Used Java text Scanner to read through the file. This breaks the line into tokens using the delimiter pattern.
+    2) TripFileReader.java : Used Java text Scanner to read through the file. This breaks the line into tokens using the delimiter pattern.
         Java Stream is another option available in Java 8. There is no difference in performance between Scanner and Stream. So, proceeded with Scanner
 
-    3)  Collected all the lines into an String array - Each array item is space delimited string
+    3) TripProcessor.java : Process the Collected String array and loads data into Driver and Trip model.
 
-    4)  Class: RootUtil - The String array is parsed into 2 ArrayList - DriverList and TripSummaryList
-        DriverList will have all the drivers name to register
-        TripSummaryList will have all the Trip data for the drivers
+    4) Driver.java : Driver model adds all the driver names and trip details in Trip.java model.
 
-        Scenarios Handled:
-            1) IF the Trip command has the start time less than end time, then the trip will be ignored as its gone past into next day
-                System.out.println("File validation required : Invalid trip data on line number: " + lineNumber);
+    5) TripDataHelper.java : All the validations and methods to build the model objects.
 
-            2) If the Trip command has the entry for unregistered Drivers ( Driver name not available in First command)
-                System.out.println("File validation required: Trip data found for unregistered driver: "+driverName);
+    6) DriverTripManager.java :  printAllDriverTrips method Prints all the results into console.
+         Since the output needs to be printed based on the most miles driven, Used Java Lambda to sort the final summary List by miles and
+         then reverse sorted using collections to print the most miles first.
 
-    5)  Class: PrepareDrivingSummary - Iterate through the remaining valid driverList to manipulate the trip summary :
-            Total miles driven
-            Average speed per hour
-
-            This class also handles the scenario to ignore speed driven less than 5 miles/hr and greater than 100 miles/hr
-            All these invalid trips are collected in a List - this can be used for additional validation
-
-            This method returns the final driving summary for all the drivers.
-
-     6)  Class: printTripSummary - Prints all the final summary into console.
-            Since the output needs to be printed based on the most miles driven, Used Java Lambda to sort the final summary List by miles and
-            then reverse sorted using collections to print the most miles first.
-
-      7)  Used 3 Value objects Driver, TripSummary, FinalSummary for manipulating the data.
+    7) Test cases covers all the public methods, which has validation and calculation, in model, manager and helper classes.
 
 Run the application:
     This solution can be executed in 2 ways:

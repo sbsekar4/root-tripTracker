@@ -1,4 +1,4 @@
-package com.root.driverTracking.util;
+package com.root.driverSummary.util;
 
 import org.junit.Before;
 import org.junit.Test;

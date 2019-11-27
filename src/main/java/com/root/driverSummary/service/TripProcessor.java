@@ -1,9 +1,9 @@
-package com.root.driverTracking.service;
+package com.root.driverSummary.service;
 
-import com.root.driverTracking.helper.TripDataHelper;
-import com.root.driverTracking.model.Driver;
-import com.root.driverTracking.model.Trip;
-import com.root.driverTracking.reader.TripFileReader;
+import com.root.driverSummary.helper.TripDataHelper;
+import com.root.driverSummary.model.Driver;
+import com.root.driverSummary.model.Trip;
+import com.root.driverSummary.reader.TripFileReader;
 
 import java.time.LocalTime;
 import java.util.ArrayList;

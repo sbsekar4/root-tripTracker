@@ -1,7 +1,7 @@
-package com.root.driverTracking.manager;
+package com.root.driverSummary.manager;
 
-import com.root.driverTracking.model.Driver;
-import com.root.driverTracking.service.TripProcessor;
+import com.root.driverSummary.model.Driver;
+import com.root.driverSummary.service.TripProcessor;
 
 import java.util.ArrayList;
 import java.util.Collections;

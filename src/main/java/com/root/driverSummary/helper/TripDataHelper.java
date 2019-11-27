@@ -1,6 +1,6 @@
-package com.root.driverTracking.helper;
+package com.root.driverSummary.helper;
 
-import com.root.driverTracking.util.RootUtil;
+import com.root.driverSummary.util.RootUtil;
 
 import java.time.LocalTime;
 

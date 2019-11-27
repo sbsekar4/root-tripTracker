@@ -1,6 +1,6 @@
-package com.root.driverTracking;
+package com.root.driverSummary;
 
-import com.root.driverTracking.manager.DriverTripManager;
+import com.root.driverSummary.manager.DriverTripManager;
 
 class DriverTripHandler {
     public static void main(String[] args) {

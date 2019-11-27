@@ -1,4 +1,4 @@
-package com.root.driverTracking.model;
+package com.root.driverSummary.model;
 
 import java.time.Duration;
 import java.time.LocalTime;
