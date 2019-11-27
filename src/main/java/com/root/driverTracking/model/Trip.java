@@ -18,6 +18,6 @@ public class Trip {
     }
 
     public Double calculateDuration() {
-        return Double.valueOf(Duration.between(startTime, endTime).toMinutes());
+        return (double) Duration.between(startTime, endTime).toMinutes();
     }
 }

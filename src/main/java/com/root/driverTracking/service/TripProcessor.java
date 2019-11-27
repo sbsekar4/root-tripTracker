@@ -29,7 +29,6 @@ public class TripProcessor {
                     tripStartTime = TripDataHelper.getLocalTime(tripData[2]);
                     tripEndTime = TripDataHelper.getLocalTime(tripData[3]);
                     tripMiles = TripDataHelper.getMiles(tripData[4]);
-
                 }
                 Driver driver = driverMap.containsKey(driverName) ? driverMap.get(driverName) : new Driver(driverName);
                 if (tripStartTime != null && tripEndTime != null && tripMiles != null) {

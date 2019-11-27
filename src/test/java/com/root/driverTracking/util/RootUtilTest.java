@@ -24,7 +24,7 @@ public class RootUtilTest {
     @Test
     public void calculateSpeed() {
         long speed =(long) RootUtil.calculateSpeed(startTime,endTime, miles);
-        assertEquals("Driving Speed in mph : ",33,speed);
+        assertEquals("Driving Speed in mph : ",33, speed);
     }
 
     @Test

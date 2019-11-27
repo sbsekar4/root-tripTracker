@@ -40,7 +40,7 @@
                             <addClasspath>true</addClasspath>
                             <classpathPrefix>libs/</classpathPrefix>
                             <mainClass>
-                                com.root.driverTracking.service.TripProcessor
+                                com.root.driverTracking.DriverTripHandler
                             </mainClass>
                         </manifest>
                     </archive>

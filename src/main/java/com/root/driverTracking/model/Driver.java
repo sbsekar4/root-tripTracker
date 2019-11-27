@@ -7,13 +7,13 @@ import java.util.Comparator;
 import java.util.List;
 
 public class Driver implements Comparator<Driver> {
-    private Long driverID;
-    public String name;
-    private List<Trip> trips;
+
+    public final String name;
+    private final List<Trip> trips;
 
     public Driver(String name) {
         this.name = name;
-        this.driverID = (long) Math.random();
+        final Long driverID = (long) Math.random();
         this.trips = new ArrayList<>();
     }
 

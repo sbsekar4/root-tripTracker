@@ -2,7 +2,6 @@ package com.root.driverTracking.helper;
 
 import com.root.driverTracking.util.RootUtil;
 
-import java.security.SecureRandom;
 import java.time.LocalTime;
 
 public class TripDataHelper {
@@ -30,7 +29,7 @@ public class TripDataHelper {
 
     public static Boolean isValidTrip(String[] tripData) {
         if (tripData.length == 5 && LocalTime.parse(tripData[3]).isAfter(LocalTime.parse(tripData[2]))) {
-            double speed = 0;
+            double speed;
             speed = RootUtil.calculateSpeed(LocalTime.parse(tripData[2]), LocalTime.parse(tripData[3]),
                     Double.parseDouble(tripData[4]));
             if (speed > 5 && speed < 100) {
@@ -65,12 +64,4 @@ public class TripDataHelper {
         return convertToMiles(miles);
     }
 
-    public static Long generateIDs() {
-        SecureRandom ng = null;
-        if (ng == null) {
-            ng = new SecureRandom();
-        }
-
-        return ng.nextLong();
-    }
 }
