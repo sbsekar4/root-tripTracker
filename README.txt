@@ -56,7 +56,7 @@ Java Classes:
 
 Run the application:
 
-    1) mvn clean package, builds the root.jar in the target directory
+    1) mvn clean package, runs all the tests and builds the root.jar in the target directory
     2) java -jar target/root.jar (loads and executes the main class and prints the output in console).
 
 

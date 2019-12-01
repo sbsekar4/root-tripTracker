@@ -3,6 +3,9 @@ package com.root.driverSummary.util;
 import java.time.Duration;
 import java.time.LocalTime;
 
+/**
+ * Utility Class for common functions
+ */
 public class RootUtil {
 
     public static double calculateSpeed(LocalTime startTime, LocalTime endTime, Double miles) {

@@ -11,6 +11,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * This class process the input file and manipulates the input data in two model objects
+ */
 public class TripProcessor {
 
     public List<Driver> processFileData(String fileName) {

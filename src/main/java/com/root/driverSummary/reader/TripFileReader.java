@@ -6,6 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * This class reads through the input file and returns a list of string array with Driver and Trip data.
+ */
 public class TripFileReader {
 
     public static List<String[]> readTripData(String fileName) {

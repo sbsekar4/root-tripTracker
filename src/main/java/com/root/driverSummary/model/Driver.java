@@ -7,8 +7,13 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
+/**
+ * This is the Model for Driver, Stores all the Driver and Trip details
+ */
 public class Driver implements Comparator<Driver> {
-    public Long driverID; /*Driver ID is not used in this app, created to map the Trip details using Driver ID */
+    //Driver ID is not used in this project effectively
+    //created for enhancement purpose to map the Trip details using Driver ID
+    public Long driverID;
     public final String name;
     private final List<Trip> trips;
 

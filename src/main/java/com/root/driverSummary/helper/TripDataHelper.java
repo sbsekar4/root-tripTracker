@@ -4,6 +4,9 @@ import com.root.driverSummary.util.RootUtil;
 
 import java.time.LocalTime;
 
+/**
+ * This Class contains all the validations and computations for populating model objects.
+ */
 public class TripDataHelper {
     private static long tripIDCounter = 0;
     private static long driverIDCounter = 0;

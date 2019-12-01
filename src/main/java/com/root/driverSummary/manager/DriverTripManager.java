@@ -8,6 +8,10 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+/**
+ * This class calls the processFileData() method with filename as the parameter.
+ * The actual file is located in the classpath of this project.
+ */
 public class DriverTripManager {
     private final String fileName;
     private List<Driver> driverList = new ArrayList<>();
@@ -17,13 +21,20 @@ public class DriverTripManager {
         this.fileName = fileName;
     }
 
+    /**
+     * This method calls the TripProcessor class to process the input file and create the model objects
+     */
     public void loadDriverTripInfo() {
         driverList = tripProcessor.processFileData(fileName);
     }
 
+    /**
+     * This method uses the driverList populated and returned by the TripProcessor and model objects
+     * and prints the results in the console
+     */
     public void printAllDriverTrips() {
         driverList.sort(Comparator.comparingInt(o -> Math.toIntExact(o.getTotalMilesForDriver())));
-        System.out.println("/******** Driving Summary *********/");
+        System.out.println("/******** Printing Driving Summary *********/");
         Collections.reverse(driverList);
         for (Driver driver : driverList) {
             Long totalMilesForDriver = driver.getTotalMilesForDriver();
