@@ -1,0 +1,19 @@
+### MacOSX
+.DS_Store
+
+### Gradle
+.gradle
+
+### Build
+target
+build
+
+### IDE
+.classpath
+.settings
+*~
+*.iml
+*.ipr
+*.iws
+.idea
+
