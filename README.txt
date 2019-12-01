@@ -1,70 +1,62 @@
-#Root- Driver Summary
+#Root- Driving Summary
 Problem Statement:
-The code will process an input file. Each line in the input file will start with a command. There are two possible commands.
+The code will process an input file. You can either choose to accept the input via stdin (e.g. if you're using Ruby cat input.txt | ruby yourcode.rb), or as a file name given on the command line (e.g. ruby yourcode.rb input.txt). You can use any programming language that you want. Please choose a language that allows you to best demonstrate your programming ability.
 
-    1) The first command is Driver, which will register a new Driver in the app.
-        Example: Driver Dan
-    2) The second command is Trip, which will record a trip attributed to a driver. (Trip), driver name, start time, stop time, miles driven
-        Example: Trip Dan 07:15 07:45 17.3
+Each line in the input file will start with a command. There are two possible commands.
+
+The first command is Driver, which will register a new Driver in the app. Example:
+
+Driver Dan
+
+The second command is Trip, which will record a trip attributed to a driver. The line will be space delimited with the following fields: the command (Trip), driver name, start time, stop time, miles driven. Times will be given in the format of hours:minutes. We'll use a 24-hour clock and will assume that drivers never drive past midnight (the start time will always be before the end time). Example:
+
+Trip Dan 07:15 07:45 17.3
+
+Discard any trips that average a speed of less than 5 mph or greater than 100 mph.
+
+Generate a report containing each driver with total miles driven and average speed. Sort the output by most miles driven to least. Round miles and miles per hour to the nearest integer.
+
+Example input:
+
+Driver Dan
+Driver Lauren
+Driver Kumi
+Trip Dan 07:15 07:45 17.3
+Trip Dan 06:12 06:32 21.8
+Trip Lauren 12:01 13:16 42.0
+Expected output:
+
+Lauren: 42 miles @ 34 mph
+Dan: 39 miles @ 47 mph
+Kumi: 0 miles
 
 Solution:
 
-Tech specs: Java 8, Maven, Junit
+Tech specs: Java 8, Maven, Junit4, amazon-corretto-8.jdk
+Java Doc: root-tripTracker/javadoc/index.html
 
-    1)  Given the input file is provided, ruled out the possibility of FileNotFound case and added the file into classpath.
+Java Classes:
 
-    2)  Class: TripProcessor.java - Used Java text Scanner to read through the file. This breaks the line into tokens using the delimiter pattern.
+    1) DriverTripHandler.java :is the main class, which process the input file and prints the output in the console.
+
+    2) TripFileReader.java : Used Java text Scanner to read through the file. This breaks the line into tokens using the delimiter pattern.
         Java Stream is another option available in Java 8. There is no difference in performance between Scanner and Stream. So, proceeded with Scanner
 
-    3)  Collected all the lines into an String array - Each array item is space delimited string
+    3) TripProcessor.java : Process the Collected String array and loads data into Driver and Trip model.
 
-    4)  Class: RootUtil - The String array is parsed into 2 ArrayList - DriverList and TripSummaryList
-        DriverList will have all the drivers name to register
-        TripSummaryList will have all the Trip data for the drivers
+    4) Driver.java : Driver model adds all the driver names and trip details in Trip.java model.
 
-        Scenarios Handled:
-            1) If the line have no Driver name : The below info will be printed in the console with line number
-                System.out.println("File validation required: Driver name not found on line number: " + lineNumber)
+    5) TripDataHelper.java : All the validations and methods to build the model objects.
 
-            2) If the line does not have required inputs for Trip command, it will be ignored and printed in console with line number
-                System.out.println("File validation required : Invalid trip data on line number: " + lineNumber);
+    6) DriverTripManager.java :  printAllDriverTrips method Prints all the results into console.
+         Since the output needs to be printed based on the most miles driven, Used Java Lambda to sort the final summary List by miles and
+         then reverse sorted using collections to print the most miles first.
 
-            3) IF the Trip command has the start time less than end time, then the trip will be ignored as its gone past into next day
-                System.out.println("File validation required : Invalid trip data on line number: " + lineNumber);
-
-            4) If the Trip command has the entry for unregistered Drivers ( Driver name not available in First command)
-                System.out.println("File validation required: Trip data found for unregistered driver: "+driverName);
-
-    5)  Class: PrepareDrivingSummary - Iterate through the remaining valid driverList to manipulate the trip summary :
-            Total miles driven
-            Average speed per hour
-
-            This class also handles the scenario to ignore speed driven less than 5 miles/hr and greater than 100 miles/hr
-            All these invalid trips are collected in a List - this can be used for additional validation
-
-            This method returns the final driving summary for all the drivers.
-
-     6)  Class: printTripSummary - Prints all the final summary into console.
-            Since the output needs to be printed based on the most miles driven, Used Java Lambda to sort the final summary List by miles and
-            then reverse sorted using collections to print the most miles first.
-
-      7)  Used 3 Value objects Driver, TripSummary, FinalSummary for manipulating the data.
-
-  Maven:
-        Used maven to handle the dependencies.
-        Since, the input file is in the classpath, mvn clean package will process this file and print the input while executing the test cases.
-
-  Junit:
-        Started off this solution as TTD. Since there is not much scope for computation, used Junit to call the main method and print the output
-         during the mvn build.
-
-        There are only 2 calculation involved, calculateSpeed and calculateDuration. Since these methods kept as private, ignored these methods in tests.
-
+    7) Test cases covers all the public methods, which has validation and calculation, in model, manager and helper classes.
 
 Run the application:
-    This solution can be executed in 2 ways:
 
-    1) mvn clean package (it will process the file as part of tests and prints the output in console) and builds a root.jar in the target directory
-    2) java -jar target/root.jar (This is actual execution of code).
+    1) mvn clean package, runs all the tests and builds the root.jar in the target directory
+    2) java -jar target/root.jar (loads and executes the main class and prints the output in console).
 
 
