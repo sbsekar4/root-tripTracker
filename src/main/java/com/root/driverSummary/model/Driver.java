@@ -1,7 +1,6 @@
 package com.root.driverSummary.model;
 
 import com.root.driverSummary.helper.TripDataHelper;
-import com.root.driverSummary.util.RootUtil;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -13,7 +12,7 @@ import java.util.List;
 public class Driver implements Comparator<Driver> {
     //Driver ID is not used in this project effectively
     //created for enhancement purpose to map the Trip details using Driver ID
-    public Long driverID;
+    private final Long driverID;
     public final String name;
     private final List<Trip> trips;
 
@@ -28,7 +27,7 @@ public class Driver implements Comparator<Driver> {
     }
 
     public Long getAverageSpeed() {
-        return Math.round(RootUtil.averageSpeed((double) getTotalDurationForDriver(), (double) getTotalMilesForDriver()));
+        return Math.round(TripDataHelper.averageSpeed((double) getTotalDurationForDriver(), (double) getTotalMilesForDriver()));
     }
 
     public Long getTotalMilesForDriver() {

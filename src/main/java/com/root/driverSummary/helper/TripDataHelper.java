@@ -1,7 +1,6 @@
 package com.root.driverSummary.helper;
 
-import com.root.driverSummary.util.RootUtil;
-
+import java.time.Duration;
 import java.time.LocalTime;
 
 /**
@@ -35,7 +34,7 @@ public class TripDataHelper {
     public static Boolean isValidTrip(String[] tripData) {
         if (tripData.length == 5 && LocalTime.parse(tripData[3]).isAfter(LocalTime.parse(tripData[2]))) {
             double speed;
-            speed = RootUtil.calculateSpeed(LocalTime.parse(tripData[2]), LocalTime.parse(tripData[3]),
+            speed = calculateSpeed(LocalTime.parse(tripData[2]), LocalTime.parse(tripData[3]),
                     Double.parseDouble(tripData[4]));
             if (speed > 5 && speed < 100) {
                 return true;
@@ -69,11 +68,24 @@ public class TripDataHelper {
         return convertToMiles(miles);
     }
 
-    public static synchronized Long createDriverID() {
+    public static Long createDriverID() {
         return driverIDCounter++;
     }
 
-    public static synchronized Long createTripID() {
+    public static Long createTripID() {
         return tripIDCounter++;
+    }
+
+    private static double calculateSpeed(LocalTime startTime, LocalTime endTime, Double miles) {
+        double duration = Duration.between(startTime, endTime).toMinutes();
+        return averageSpeed(duration,miles);
+    }
+
+    public static double averageSpeed(Double totalDuration, Double totalMiles) {
+        if (totalDuration > 0) {
+            return totalMiles / totalDuration * 60;
+        } else {
+            return totalMiles * 60;
+        }
     }
 }
