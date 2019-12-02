@@ -5,7 +5,6 @@ import com.root.driverSummary.service.TripProcessor;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -33,7 +32,8 @@ public class DriverTripManager {
      * and prints the results in the console
      */
     public void printAllDriverTrips() {
-        driverList.sort(Comparator.comparingInt(o -> Math.toIntExact(o.getTotalMilesForDriver())));
+        Collections.sort(driverList, Driver.MILES_COMPARATOR);
+        //Collections.sort(driverList,Driver.Speed_COMPARATOR); If required in future, Sort by speed
         System.out.println("/******** Printing Driving Summary *********/");
         Collections.reverse(driverList);
         for (Driver driver : driverList) {

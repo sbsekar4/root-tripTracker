@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * This is the Model for Driver, Stores all the Driver and Trip details
  */
-public class Driver implements Comparator<Driver> {
+public class Driver {
     //Driver ID is not used in this project effectively
     //created for enhancement purpose to map the Trip details using Driver ID
     private final Long driverID;
@@ -46,9 +46,7 @@ public class Driver implements Comparator<Driver> {
         return Math.round(duration);
     }
 
+    public static final Comparator<Driver> MILES_COMPARATOR = Comparator.comparingLong(Driver::getTotalMilesForDriver);
+    public static final Comparator<Driver> Speed_COMPARATOR = Comparator.comparingLong(Driver::getAverageSpeed);
 
-    @Override
-    public int compare(Driver o1, Driver o2) {
-        return o1.getTotalMilesForDriver().compareTo(o2.getTotalMilesForDriver());
-    }
 }
