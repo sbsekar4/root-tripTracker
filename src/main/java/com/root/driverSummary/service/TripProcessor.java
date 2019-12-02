@@ -40,7 +40,8 @@ public class TripProcessor {
                 }
                 driverMap.put(driverName, driver);
             } else {
-                System.out.println("File validation required : Invalid data found");
+                System.out.println("/***** Validation Required *****/");
+                System.out.println("File validation required : Invalid trip data found");
             }
         }
         return new ArrayList<>(driverMap.values());
