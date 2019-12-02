@@ -13,41 +13,41 @@ public class TripDataHelperTest {
 
     private final List<String[]> driver = new ArrayList<>();
     private final List<String[]> trip = new ArrayList<>();
-    private final List<String> inputTime = new ArrayList<>();
 
     @Before
     public void processInputFile() {
-        final String fileName = "input.txt";
-        List<String[]> fileData = TripFileReader.readTripData(fileName);
-        for (String[] driveInfo : fileData) {
-            if (driveInfo[0].contains("Driver")) {
-                driver.add(driveInfo);
-            } else if (driveInfo[0].contains("Trip") && driveInfo.length > 3) {
-                trip.add(driveInfo);
-                inputTime.add(driveInfo[2]);
-                inputTime.add(driveInfo[3]);
-            }
-        }
+        String driverWithName = "Driver Dan";
+        String driverWithoutName = "Driver ";
+        String tripWithDriver = "Trip Lauren 07:15 07:45 17.3";
+        String tripWithoutDriver = "Trip    07:15 07:45 17.3";
+        driver.add(driverWithName.split("\\s+"));
+        driver.add(driverWithoutName.split("\\s+"));
+        trip.add(tripWithDriver.split("\\s+"));
+        trip.add(tripWithoutDriver.split("\\s+"));
     }
 
     @Test
-    public void getDriver() {
-        for (String[] driver : driver) {
-            Assert.assertEquals("Driver name from file and returned by model should match", driver[1], TripDataHelper.getDriver(driver));
-        }
+    public void getDriver_withName() {
+        Assert.assertEquals("Driver name from file and returned by model should match", "Dan", TripDataHelper.getDriver(driver.get(0)));
+    }
+
+    @Test
+    public void getDriver_withoutName() {
+        Assert.assertEquals("Driver name from file and returned by model should match", null, TripDataHelper.getDriver(driver.get(1)));
+    }
+
+    @Test
+    public void getDriver_tripRowDriver() {
+        Assert.assertEquals("Driver name from file and returned by model should match", "Lauren", TripDataHelper.getDriver(trip.get(0)));
     }
 
     @Test
     public void isValidTrip() {
-        for (String[] trip : trip) {
-            Assert.assertEquals("Invalid trip in the file", true, TripDataHelper.isValidTrip(trip));
-        }
+        Assert.assertEquals("Invalid trip in the file", true, TripDataHelper.isValidTrip(trip.get(0)));
     }
 
     @Test
-    public void getLocalTime() {
-        for (String localTime : inputTime) {
-            Assert.assertEquals("Time from file and LocalTime should be same", (LocalTime.parse(localTime)), TripDataHelper.getLocalTime(localTime));
-        }
+    public void notValidTrip() {
+        Assert.assertEquals("Invalid trip in the file", false, TripDataHelper.isValidTrip(trip.get(1)));
     }
 }
