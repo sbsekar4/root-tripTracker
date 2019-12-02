@@ -20,7 +20,7 @@ public class TripDataHelperTest {
         final String fileName = "input.txt";
         List<String[]> fileData = TripFileReader.readTripData(fileName);
         for (String[] driveInfo : fileData) {
-            if (driveInfo[0].contains("Driver") && driveInfo.length > 0) {
+            if (driveInfo[0].contains("Driver")) {
                 driver.add(driveInfo);
             } else if (driveInfo[0].contains("Trip") && driveInfo.length > 3) {
                 trip.add(driveInfo);
